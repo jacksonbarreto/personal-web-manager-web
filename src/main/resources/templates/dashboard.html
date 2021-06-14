@@ -1,53 +1,86 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thmeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 <head>
     <meta charset="UTF-8">
     <title>Gerenciador de Finaças Pessoais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row h-100" style="margin-top: 10%">
+        <div class="col-md-6 text-align-center" style="margin-top: 8%; margin-bottom: 8%;">
             <h1>Gerenciador de Finanças pessoais</h1>
             <h2>UnPaper</h2>
             <h3>Veio mudar a sua forma de olhar para o verdinho</h3>
         </div>
-        <div class="col-md-1">
-        </div>
+        <div class="col-md-1"></div>
         <div class="col-md-4">
-            <div>
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Login</a>
+            <div class="tab-content">
+                <ul class="nav nav-tabs" id="tabLogin" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#login"
+                                type="button" role="tab" aria-controls="login" aria-selected="true">Login
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registar</a>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab" aria-controls="register" aria-selected="true">Registar
+                        </button>
                     </li>
                 </ul>
+                <div class="tab-pane fade show active border" id="login" style="height: auto;">
+                    <form style="margin: 20px;">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Lembrar dos dados</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade border" id="register" style="height: auto">
+                    <form style="margin: 20px;">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="exampleInputName1"
+                                   aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Confirmar palavra-passe</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Criar conta</button>
+                    </form>
+                </div>
             </div>
-            <div class="border" style="height: auto;">
-                <form style="margin: 20px;">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Lembrar dos dados</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
-            </div>
+
         </div>
-        <div class="col-md-1">
-        </div>
+
+
     </div>
 </div>
 
