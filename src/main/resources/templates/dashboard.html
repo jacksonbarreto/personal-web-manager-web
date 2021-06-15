@@ -10,60 +10,11 @@
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    /* The sidebar menu */
-    .sidenav {
-        height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 15%; /* Set the width of the sidebar */
-        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-        z-index: 1; /* Stay on top */
-        top: 0; /* Stay at the top */
-        left: 0;
-        background-color: #fff; /* Black */
-        border-right: 5px solid #286956;
-        border-top: 5px solid #286956;
-        overflow-x: hidden; /* Disable horizontal scroll */
-        padding-top: 20px;
-        margin-top: 68px;
-    }
 
-    /* The navigation menu links */
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #286956;
-        display: block;
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-    }
-
-    /* When you mouse over the navigation links, change their color */
-    .sidenav a:hover {
-        color: #286956;
-        font-weight: bold;
-    }
-
-    /* Style page content */
-    .main {
-        margin-left: 160px; /* Same as the width of the sidebar */
-        padding: 0px 10px;
-    }
-
-    .active a{
-        color: red !important;
-    }
-
-    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-    }
-</style>
+    <link rel="stylesheet" href="../static/css/dashboard.css">
     <nav class="navbar navbar-light navbar-static-top" style="background-color: #286956; width: 100%; color:white;" \>
         <div class="container" style="margin-left: 50px; min-width: 95%;">
-            <div >
+            <div>
                 <h1>UnPaper</h1>
             </div>
 
@@ -74,11 +25,12 @@
         </div>
     </nav>
     <div class="sidenav">
-        <a href="#about" class="nav-link active">Dashboard</a>
-        <a href="#services" class="nav-link">Carteiras</a>
-        <a href="#clients" class="nav-link">Operações</a>
-        <a href="#contact" class="nav-link">Categoias</a>
-        <a href="#contact" class="nav-link">Beneficiarios</a>
+        <a href="#" class="nav-link active button"><i class="fa fa-bar-chart" aria-hidden="true"
+                                               style="margin-right: 15px;"></i></i>Dashboard</a>
+        <a href="#" class="nav-link button">Carteiras</a>
+        <a href="#" class="nav-link button">Operações</a>
+        <a href="#" class="nav-link button">Categoias</a>
+        <a href="#" class="nav-link button">Beneficiarios</a>
     </div>
 </head>
 
