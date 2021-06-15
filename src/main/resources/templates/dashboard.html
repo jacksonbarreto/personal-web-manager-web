@@ -9,80 +9,84 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* The sidebar menu */
+    .sidenav {
+        height: 100%; /* Full-height: remove this if you want "auto" height */
+        width: 15%; /* Set the width of the sidebar */
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: #fff; /* Black */
+        border-right: 5px solid #286956;
+        border-top: 5px solid #286956;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 20px;
+        margin-top: 68px;
+    }
+
+    /* The navigation menu links */
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #286956;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .sidenav a:hover {
+        color: #286956;
+        font-weight: bold;
+    }
+
+    /* Style page content */
+    .main {
+        margin-left: 160px; /* Same as the width of the sidebar */
+        padding: 0px 10px;
+    }
+
+    .active a{
+        color: red !important;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+</style>
+    <nav class="navbar navbar-light navbar-static-top" style="background-color: #286956; width: 100%; color:white;" \>
+        <div class="container" style="margin-left: 50px; min-width: 95%;">
+            <div >
+                <h1>UnPaper</h1>
+            </div>
+
+            <div style="float: right">
+                <i class="fa fa-cog" style="font-size: xx-large"></i>
+                <i class="fa fa-sign-out" style="font-size: xx-large; margin-left: 15px;"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="sidenav">
+        <a href="#about" class="nav-link active">Dashboard</a>
+        <a href="#services" class="nav-link">Carteiras</a>
+        <a href="#clients" class="nav-link">Operações</a>
+        <a href="#contact" class="nav-link">Categoias</a>
+        <a href="#contact" class="nav-link">Beneficiarios</a>
+    </div>
 </head>
 
 <body>
 
-<div class="container">
-    <div class="row h-100" style="margin-top: 10%">
-        <div class="col-md-6 text-align-center" style="margin-top: 8%; margin-bottom: 8%;">
-            <h1>Gerenciador de Finanças pessoais</h1>
-            <h2>UnPaper</h2>
-            <h3>Veio mudar a sua forma de olhar para o verdinho</h3>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4">
-            <div class="tab-content">
-                <ul class="nav nav-tabs" id="tabLogin" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#login"
-                                type="button" role="tab" aria-controls="login" aria-selected="true">Login
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#register"
-                                type="button" role="tab" aria-controls="register" aria-selected="true">Registar
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-pane fade show active border" id="login" style="height: auto;">
-                    <form style="margin: 20px;">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Lembrar dos dados</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                    </form>
-                </div>
-                <div class="tab-pane fade border" id="register" style="height: auto">
-                    <form style="margin: 20px;">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="exampleInputName1"
-                                   aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Confirmar palavra-passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Criar conta</button>
-                    </form>
-                </div>
-            </div>
 
-        </div>
+<div class="container" style="width: 100%">
 
-
-    </div>
 </div>
-
 </body>
 </html>
