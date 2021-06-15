@@ -76,6 +76,10 @@ a.active {
     transition: 0s
 }
 
+.nav-link:focus, .nav-link:hover {
+    color: white;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {
@@ -85,4 +89,10 @@ a.active {
     .sidenav a {
         font-size: 18px;
     }
+}
+
+.chart-container {
+    width: 50%;
+    height: 50%;
+    margin: auto;
 }

@@ -10,35 +10,120 @@
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="../static/css/dashboard.css">
-    <nav class="navbar navbar-light navbar-static-top" style="background-color: #286956; width: 100%; color:white;" \>
-        <div class="container" style="margin-left: 50px; min-width: 95%;">
-            <div>
-                <h1>UnPaper</h1>
-            </div>
-
-            <div style="float: right">
-                <i class="fa fa-cog" style="font-size: xx-large"></i>
-                <i class="fa fa-sign-out" style="font-size: xx-large; margin-left: 15px;"></i>
-            </div>
-        </div>
-    </nav>
-    <div class="sidenav">
-        <a href="#" class="nav-link active button"><i class="fa fa-bar-chart" aria-hidden="true"
-                                               style="margin-right: 15px;"></i></i>Dashboard</a>
-        <a href="#" class="nav-link button">Carteiras</a>
-        <a href="#" class="nav-link button">Operações</a>
-        <a href="#" class="nav-link button">Categoias</a>
-        <a href="#" class="nav-link button">Beneficiarios</a>
-    </div>
 </head>
 
 <body>
+<header th:replace="~{fragmentos :: menus}"></header>
 
+<div class="container" style="width: 85%; float: right; margin-right: 50px; min-height: 100%;">
+    <div class="card chart-container" style="border:0;">
+        <canvas id="chart"></canvas>
+    </div>
+    <div class="row" style="min-height: 50%; margin-top: 20px;">
+        <div class="card chart-container" style="border:0;">
+            <canvas id="chart2"></canvas>
+        </div>
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Opções</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">19/03/2021</th>
+                    <td>Movimento 1</td>
+                    <td style="color:red;text-align: right;"> - 250,00 €</td>
+                    <td>
+                        <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-trash"
+                                                                                                     aria-hidden="true"></i>
+                        </button>
+                        <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-check"
+                                                                                                     aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">19/03/2021</th>
+                    <td>Transação 1</td>
+                    <td style="color:green; text-align: right;"> + 250,00 €</td>
+                    <td>
+                        <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
 
-<div class="container" style="width: 100%">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
+    </div>
 </div>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js">
+</script>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("sidenav");
+    var btns = header.getElementsByClassName("button");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+<script>
+    const ctx = document.getElementById("chart").getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Março",
+                "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            datasets: [{
+                backgroundColor: 'rgba(161, 198, 247, 1)',
+                borderColor: 'rgb(47, 128, 237)',
+                data: [3000, 4000, 2000, 5000, 8000, 9000, 2000, 4000, 2000, 5000, 8000, 9000, 2000],
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
+            }
+        },
+    });
+</script>
+
+<script>
+    const ctx2 = document.getElementById("chart2").getContext('2d');
+    const myChart2 = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ["rice", "yam", "tomato", "potato", "beans",
+                "maize", "oil"],
+            datasets: [{
+                data: [30, 40, 20, 50, 80, 90, 20],
+                backgroundColor: ["#0074D9", "#FF4136", "#2ECC40",
+                    "#FF851B", "#7FDBFF", "#B10DC9", "#FFDC00",
+                    "#001f3f", "#39CCCC", "#01FF70", "#85144b",
+                    "#F012BE", "#3D9970", "#111111", "#AAAAAA"]
+            }]
+        },
+    });
+</script>
 </body>
 </html>
