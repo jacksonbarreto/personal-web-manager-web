@@ -1,0 +1,104 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thmeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Finaças Pessoais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/carteiras.css">
+    <nav class="navbar navbar-light navbar-static-top" style="background-color: #286956; width: 100%; color:white;" \>
+        <div class="container" style="margin-left: 50px; min-width: 95%;">
+            <div>
+                <h1>UnPaper</h1>
+            </div>
+
+            <div style="float: right">
+                <i class="fa fa-cog" style="font-size: xx-large"></i>
+                <i class="fa fa-sign-out" style="font-size: xx-large; margin-left: 15px;"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="sidenav" id="sidenav">
+        <a href="#" class="nav-link active button">
+            <i class="fa fa-bar-chart" aria-hidden="true"
+               style="margin-right: 15px;"></i></i>Dashboard</a>
+        <a href="#" class="nav-link button">Carteiras</a>
+        <a href="#" class="nav-link button">Operações</a>
+        <a href="#" class="nav-link button">Categorias</a>
+        <a href="#" class="nav-link button">Beneficiarios</a>
+    </div>
+</head>
+<body>
+<div class="container" style="width: 85%; float: right; margin-right: 50px; min-height: 100%;">
+    <div class="row" style="margin-top: 25px;">
+        <div class="col">
+            <h1>Carteiras</h1>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-outline-success btn-cria" data-bs-toggle="modal"
+                    data-bs-target="#createWalletModal">Nova carteira
+            </button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <table class="table table-striped" style="width:50%;margin: auto;padding: 10px;">
+            <thead>
+            <tr>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Carteira 1</td>
+                <td style="text-align: right;">
+                    <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-trash"
+                                                                                                 aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Carteira 2</td>
+                <td style="text-align: right;">
+                    <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-trash"
+                                                                                                 aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createWalletModal" tabindex="-1" aria-labelledby="createWalletModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="min-width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Criar nova carteira</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn" style="background-color:#286956;color: white;">Criar carteira</button>
+            </div>
+        </div>
+    </div>
+</div>
