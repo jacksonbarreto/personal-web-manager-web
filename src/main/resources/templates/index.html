@@ -36,15 +36,15 @@
           </li>
         </ul>
         <div class="tab-pane fade show active border" id="login" style="height: auto;">
-          <form style="margin: 20px;">
+          <form action="/index/login" method="POST" style="margin: 20px;">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail1"
+              <label for="emailSignIn" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="emailSignIn"
                      aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
-              <input type="password" class="form-control" id="exampleInputPassword">
+              <label for="passwordSignIn" class="form-label">Palavra-passe</label>
+              <input type="password" class="form-control" name="password" id="passwordSignIn">
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -54,24 +54,24 @@
           </form>
         </div>
         <div class="tab-pane fade border" id="register" style="height: auto">
-          <form style="margin: 20px;">
+          <form action="/index/signUp" method="POST"  style="margin: 20px;">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="exampleInputName1"
+              <label for="nameSignUp" class="form-label">Nome</label>
+              <input type="text" class="form-control" name="name" id="nameSignUp"
                      aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail"
+              <label for="emailSignUp" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="emailSignUp"
                      aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Palavra-passe</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="passwordSignUp" class="form-label">Palavra-passe</label>
+              <input type="password" class="form-control" name="password"  id="passwordSignUp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Confirmar palavra-passe</label>
-              <input type="password" class="form-control" id="exampleInputPassword2">
+              <label for="passwordSignUpConfirm" class="form-label">Confirmar palavra-passe</label>
+              <input type="password" class="form-control" id="passwordSignUpConfirm">
             </div>
             <button type="submit" class="btn btn-primary">Criar conta</button>
           </form>

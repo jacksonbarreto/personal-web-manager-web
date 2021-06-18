@@ -4,10 +4,11 @@ import com.jacksonleonardo.unpaper.model.enumerators.ERepetitionFrequency;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
+import java.io.Serializable;
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)
-public class ERepetitionFrequencyConverter implements AttributeConverter<ERepetitionFrequency, Integer> {
+public class ERepetitionFrequencyConverter implements AttributeConverter<ERepetitionFrequency, Integer>, Serializable {
     @Override
     public Integer convertToDatabaseColumn(ERepetitionFrequency frequency) {
         return frequency.getID();

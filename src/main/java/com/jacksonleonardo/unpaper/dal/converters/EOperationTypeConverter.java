@@ -4,10 +4,11 @@ import com.jacksonleonardo.unpaper.model.enumerators.EOperationType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
+import java.io.Serializable;
 import java.util.stream.Stream;
 
 @Converter(autoApply = true)
-public class EOperationTypeConverter implements AttributeConverter<EOperationType, Integer> {
+public class EOperationTypeConverter implements AttributeConverter<EOperationType, Integer> , Serializable {
     @Override
     public Integer convertToDatabaseColumn(EOperationType type) {
         return type.getID();
