@@ -34,7 +34,7 @@
     </div>
 </head>
 <body>
-<div class="container" style="width: 85%; float: right; margin-right: 50px; min-height: 100%;">
+<div class="container" style="width: 85%; float: right; margin-right: 12em; min-height: 100%;">
     <div class="row" style="margin-top: 25px;">
         <div class="col">
             <h1>Carteiras</h1>
@@ -59,19 +59,21 @@
                     <button class="btn border" style="border-color: #286956; color: #286956;"><i
                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </button>
-                    <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-trash"
-                                                                                                 aria-hidden="true"></i>
+                    <button class="btn border" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal" style="border-color: #286956; color: #286956;"><i
+                            class="fa fa-trash"
+                            aria-hidden="true"></i>
                     </button>
                 </td>
             </tr>
             <tr>
                 <td>Carteira 2</td>
                 <td style="text-align: right;">
-                    <button class="btn border" style="border-color: #286956; color: #286956;"><i
-                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <button class="btn border" style="border-color: #286956; color: #286956;">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </button>
-                    <button class="btn border" style="border-color: #286956; color: #286956;"><i class="fa fa-trash"
-                                                                                                 aria-hidden="true"></i>
+                    <button class="btn border" style="border-color: #286956; color: #286956;">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </td>
             </tr>
@@ -85,7 +87,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="createWalletModal" tabindex="-1" aria-labelledby="createWalletModalLabel" aria-hidden="true">
+<div class="modal fade" id="createWalletModal" tabindex="-1" aria-labelledby="createWalletModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" style="min-width: 50%;">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,11 +96,78 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <form>
+                    <div class="mb-3">
+                        <label for="nameWallet" class="form-label">Nome carteira</label>
+                        <input type="text" class="form-control" id="nameWallet" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="coinWallet" class="form-label">Moeda</label>
+                        <select class="form-select" aria-label="Default select example" id="coinWallet">
+                            <option selected>Escolha uma moeda</option>
+                            <option value="1">Euro</option>
+                            <option value="2">Dolar</option>
+                            <option value="3">Real</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descriptionWallet" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="descriptionWallet" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkDiv">Formas de pagamento</label>
+                        <div id="checkDiv" style="overflow: auto; height: 7em;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="1">
+                                <label class="form-check-label" for="1">
+                                    Dinheiro
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="2">
+                                <label class="form-check-label" for="2">
+                                    Cartão
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="3">
+                                <label class="form-check-label" for="3">
+                                    MbWay
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="4">
+                                <label class="form-check-label" for="4">
+                                    Vale presente
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn" style="background-color:#286956;color: white;">Criar carteira</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="createWalletModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTitle">Apagar carteira</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem a certeza que pretende apagar esta carteira?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" style="background-color:#286956;color: white;"
+                        data-bs-dismiss="modal">Cancelar
+                </button>
+                <button type="button" class="btn btn-danger">Apagar carteira</button>
             </div>
         </div>
     </div>
