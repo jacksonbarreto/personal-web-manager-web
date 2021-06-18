@@ -34,7 +34,7 @@
     </div>
 </head>
 <body>
-<div class="container" style="width: 85%; float: right; margin-right: 12em; min-height: 100%;">
+<div class="container" style="width: 85%; float: right; margin-right: 10%; min-height: 100%;">
     <div class="row" style="margin-top: 25px;">
         <div class="col">
             <h1>Operações</h1>
@@ -45,7 +45,34 @@
             </button>
         </div>
     </div>
-
+    <div class="row md-3" style="margin-top: 20px;">
+            <div class="col-5">
+                <label for="datasPesq">Pesquisar entre: </label>
+                <div class="row" id="datasPesq" style="height: 50%">
+                    <div class="col">
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-1">
+                        <label style="padding-top: 10px;">até</label>
+                    </div>
+                    <div class="col">
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="carteiraInpt" class="form-label">Carteira</label>
+                <select class="form-select" aria-label="Default select example" id="carteiraInpt">
+                    <option selected>Escolha uma carteira</option>
+                    <option value="1">Carteira 1</option>
+                    <option value="2">Carteira 2</option>
+                </select>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-outline-success btn-cria">Pesquisar
+                </button>
+            </div>
+    </div>
     <div class="row" style="margin-top: 50px;">
         <table class="table table-striped">
             <thead>
