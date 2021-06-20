@@ -207,6 +207,15 @@ public class FormOfPayment implements IFormOfPayment {
         return this.getName().toLowerCase().compareTo(o.getName().toLowerCase());
     }
 
+    @Override
+    public String toString() {
+        return "FormOfPayment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                '}';
+    }
+
     protected FormOfPayment() {
     }
 

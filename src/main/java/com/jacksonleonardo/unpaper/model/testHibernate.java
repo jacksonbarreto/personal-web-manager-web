@@ -11,6 +11,8 @@ import com.jacksonleonardo.unpaper.model.valueObjects.IEmail;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
+import java.util.Currency;
+import java.util.Locale;
 
 import static com.jacksonleonardo.unpaper.model.enumerators.ERole.ADMIN;
 import static com.jacksonleonardo.unpaper.model.enumerators.ERole.SIMPLE;
@@ -57,10 +59,19 @@ public class testHibernate {
                 new Email("euler@ipvc.pt")));
 
         // Registration of common users
-        UserRepository.getInstance().add(new User("David Albert Huffman", new Credential("huffman", "admin123"),
+        IUser Huffman = new User("David Albert Huffman", new Credential("huffman", "admin123"),
                 Collections.singletonList(ACTIVE),
                 Collections.singletonList(SIMPLE),
-                new Email("huffman@ipvc.pt")));
+                new Email("huffman@ipvc.pt"));
+
+        IFormOfPayment formOfPayment1 = new FormOfPayment("MB Way Express");
+        IPayee payeeFormat = new Payee("Wallet");
+        IWallet w1 = new Wallet("Wallet", "Save money for Disney",
+                Currency.getInstance(Locale.getDefault()), Collections.singleton(formOfPayment1), payeeFormat);
+        Huffman.addWallet(w1);
+
+
+        UserRepository.getInstance().add(Huffman);
 
         UserRepository.getInstance().add(new User("Melinda Gates", new Credential("melinda", "admin123"),
                 Collections.singletonList(ACTIVE),
