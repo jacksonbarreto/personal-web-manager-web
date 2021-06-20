@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments :: head('UnPaper - Gestor de Finanças Pessoais')}"></head>
-
 <body>
 
 <div class="container">
@@ -17,12 +16,12 @@
       <div class="tab-content">
         <ul class="nav nav-tabs" id="tabLogin" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#login"
+            <button style="color: #286956;" class="nav-link active" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#login"
                     type="button" role="tab" aria-controls="login" aria-selected="true">Login
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#register"
+            <button style="color: #286956;" class="nav-link" data-toggle="tab" data-bs-toggle="tab" data-bs-target="#register"
                     type="button" role="tab" aria-controls="register" aria-selected="true">Registar
             </button>
           </li>
@@ -42,7 +41,7 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Lembrar dos dados</label>
             </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #286956; border-color: #286956;">Entrar</button>
           </form>
         </div>
         <div class="tab-pane fade border" id="register" style="height: auto">
@@ -65,7 +64,7 @@
               <label for="passwordSignUpConfirm" class="form-label">Confirmar palavra-passe</label>
               <input type="password" class="form-control" id="passwordSignUpConfirm">
             </div>
-            <button type="submit" class="btn btn-primary">Criar conta</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #286956; border-color: #286956;">Criar conta</button>
           </form>
         </div>
       </div>
