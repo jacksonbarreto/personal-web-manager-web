@@ -45,7 +45,10 @@ public class walletController {
         }else {
             SessionService.getCurrentUser().addWallet(walletDTO.toWallet());
             UserRepository.getInstance().update(SessionService.getCurrentUser());
-            return new ModelAndView("redirect:/wallets");
+            ModelAndView mv = new ModelAndView("redirect:/wallets");
+            mv.addObject("msg","Carteira criada com sucesso.");
+            mv.addObject("error",false);
+            return mv;
         }
     }
 
@@ -65,8 +68,32 @@ public class walletController {
     }
 
     @GetMapping("/{id}/delete")
-    public String delete(@PathVariable String id) {
-        return "wallets/" + id + "/edit";
+    public ModelAndView delete(@PathVariable String id) {
+        ModelAndView mv = new ModelAndView("redirect:/wallets");
+        Optional<IWallet> optional;
+        UUID uuid = null;
+        try{
+            uuid = UUID.fromString(id);
+            UUID finalUuid = uuid;
+            optional = SessionService.getCurrentUser().getWallets().stream().filter(w -> w.getID().equals(finalUuid)).findFirst();
+        } catch (Exception e){
+            mv.addObject("msg","Carteira não encontrada.");
+            mv.addObject("error",true);
+            return mv;
+        }
+
+        if (optional.isPresent()){
+            IWallet wallet = optional.get();
+            SessionService.getCurrentUser().removeWallet(wallet);
+            UserRepository.getInstance().update(SessionService.getCurrentUser());
+            mv.addObject("msg","Carteira removida com sucesso.");
+            mv.addObject("error",false);
+
+        }else{
+            mv.addObject("msg","Carteira não encontrada.");
+            mv.addObject("error",true);
+        }
+        return mv;
     }
 
     @GetMapping("/{id}/edit")
@@ -80,8 +107,12 @@ public class walletController {
             mv.addObject("walletId", wallet.getID().toString());
             mv.addObject("formOfPayments", FormOfPaymentRepository.defaultFormOfPaymentRepository().getAll());
             mv.addObject("currencies", getAllCurrencies());
+            mv.addObject("msg","Carteira alterada com sucesso.");
+            mv.addObject("error",false);
             return mv;
         }else {
+            mv.addObject("msg","Carteira não encontrada.");
+            mv.addObject("error",false);
             return new ModelAndView("redirect:/wallets");
         }
     }

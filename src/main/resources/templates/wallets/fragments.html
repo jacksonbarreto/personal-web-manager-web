@@ -1,0 +1,45 @@
+<form th:fragment="form(action, submitTitle)" th:object="${walletDTO}" name="NewWalletForm"
+      method="post" th:action="${action}" class="row needs-validation"
+      novalidate>
+    <div class="col-12">
+        <label for="name" class="form-label">Nome carteira</label>
+        <input required type="text" class="form-control" th:field="*{name}" th:errorclass="is-invalid">
+        <div class="invalid-feedback" th:errors="*{name}"></div>
+    </div>
+    <div class="col-6">
+        <label for="currency" class="form-label">Moeda</label>
+        <select class="form-select" aria-label="Default select example" th:field="*{currency}"
+                th:errorclass="is-invalid">
+            <option selected value="n">Escolha uma moeda</option>
+            <option th:each="currency : ${currencies}" th:value="${currency.getCurrencyCode()}"
+                    th:text="${currency.getDisplayName()}"></option>
+        </select>
+        <div class="invalid-feedback" th:errors="*{currency}"> </div>
+    </div>
+    <div class="col-6">
+        <label for="description" class="form-label">Descrição</label>
+        <input type="text" class="form-control" th:field="*{description}" th:errorclass="is-invalid">
+    </div>
+    <div class="col-12">
+
+        <fieldset class="form-group" name="paymentChecked">
+            <div class="row" >
+                <legend class="col-form-label col-sm-4 ">Formas de pagamento</legend>
+                <div class="col-12">
+                    <div class="form-check" th:each="formOfPayment : ${formOfPayments}">
+
+                        <input class="form-check-input" th:field="*{paymentChecked}" type="checkbox"
+                               th:value="${formOfPayment.getID()}" th:errorclass="is-invalid">
+                        <label class="form-check-label" th:text="${formOfPayment.getName()}"></label>
+                    </div>
+                    <div class="invalid-feedback" th:errors="*{paymentChecked}"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="col-12">
+        <button type="reset" class="btn btn-danger" th:onclick="'window.location.href=\'/wallets/\''">Cancelar</button>
+        <button type="submit" class="btn" th:text="${submitTitle}" style="background-color:#286956;color: white;">Atualizar Carteira</button>
+    </div>
+</form>

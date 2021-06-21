@@ -35,7 +35,9 @@ public class MovementCategoryRepository implements IMovementCategoryRepository {
 
     @Override
     public Set<IMovementCategory> getAll() {
-        return new HashSet<>(categoryDAO.select("select m from MovementCategory m where active = 1 and publicCategory = 1 "));
+        Set<IMovementCategory> result = new HashSet<>(categoryDAO.select("select m from MovementCategory m where active = 1 and publicCategory = 1  "));
+        result.addAll(SessionService.getCurrentUser().getCategory());
+        return result;
     }
 
     /**

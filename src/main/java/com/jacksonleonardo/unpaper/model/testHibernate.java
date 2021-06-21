@@ -21,6 +21,7 @@ import static com.jacksonleonardo.unpaper.model.enumerators.EUserState.ACTIVE;
 public class testHibernate {
     public static void main(String[] args) {
 
+
         ICredential credential1 = new Credential("admin", "admin123");
         IEmail email = new Email("admin@admin.com");
         String name = "Gestor Genérico";
@@ -206,5 +207,7 @@ public class testHibernate {
         FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Dinheiro"));
         FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Cheque"));
         FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Transferência Bancária"));
+
+
     }
 }

@@ -1,0 +1,15 @@
+<form th:fragment="form(action, submitTitle)" th:object="${categoryDTO}" name="NewWalletForm"
+      method="post" th:action="${action}" class="row needs-validation"
+      novalidate>
+  <div class="col-12">
+    <label for="name" class="form-label">Nome categoria</label>
+    <input required type="text" class="form-control" th:field="*{name}" th:errorclass="is-invalid">
+    <div class="invalid-feedback" th:errors="*{name}"></div>
+  </div>
+
+  <div class="col-12">
+    <button type="reset" class="btn btn-danger" th:onclick="'window.location.href=\'/categories/\''">Cancelar</button>
+    <button type="submit" class="btn" th:text="${submitTitle}" style="background-color:#286956;color: white;"> </button>
+  </div>
+
+</form>
