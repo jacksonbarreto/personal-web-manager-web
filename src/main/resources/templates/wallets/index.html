@@ -10,7 +10,7 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-            <div class="row">
+            <div class="row mt-5">
 
                 <div th:if="${param.msg != null}">
                     <div th:classappend="${(param.error != null && param.error) ? 'alert-danger' : 'alert-success'} "
@@ -48,9 +48,7 @@
                         <td class="col-8" th:text="${wallet.getName()}">Carteira 1</td>
                         <td class="col-4" style="text-align: right;">
 
-                            <a th:href="@{/wallets/{walletId}(walletId = ${wallet.getID().toString()})}">
-                                detalhes
-                            </a>
+
 
                             <a th:href="@{/wallets/{walletId}/edit(walletId = ${wallet.getID().toString()})}">
                                 <button class="btn border" style="border-color: #286956; color: #286956;">
