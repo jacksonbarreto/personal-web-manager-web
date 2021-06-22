@@ -43,4 +43,8 @@ public class PayeeRepository implements IRepository<IPayee> {
         SessionService.getCurrentUser().removePayee(element);
         UserRepository.getInstance().update(SessionService.getCurrentUser());
     }
+
+    public static PayeeRepository getInstance(){
+        return new PayeeRepository();
+    }
 }

@@ -28,8 +28,7 @@
                     <h1>Operações</h1>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-outline-success btn-cria" data-bs-toggle="modal"
-                            data-bs-target="#createOperation">Nova operação
+                    <button type="button" class="btn btn-outline-success btn-cria" th:onclick="'window.location.href=\'/operations/new\''">Nova Operação
                     </button>
                 </div>
             </div>
@@ -54,7 +53,7 @@
                         <label for="carteiraInpt" class="form-label">Carteira</label>
                         <select class="form-select" aria-label="Default select example" id="carteiraInpt">
                             <option selected>Escolha uma carteira</option>
-                            <option th:each="wallet : ${wallets}" th:value="${wallet.getID().toString()}"></option>
+                            <option th:each="wallet : ${wallets}" th:value="${wallet.getID().toString()}" th:text="${wallet.getName()}"></option>
                         </select>
                     </div>
                     <div class="col-3">
@@ -64,7 +63,9 @@
                 </form>
             </div>
             <div class="row" >
-                <table class="table table-striped">
+                <h2 th:if="${wallet != null}">Carteira: <span th:text="${wallet.getName()}"></span></h2>
+                <span th:if="${wallet != null && wallet.getMonthOperations().isEmpty()}">Carteira sem movimentos</span>
+                <table class="table table-striped" th:if="${wallet != null && !wallet.getMonthOperations().isEmpty()} ">
                     <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -77,32 +78,22 @@
                     <tr th:each="op : ${wallet.getMonthOperations()}">
                         <td th:text="${op.getDueDate()}">19/03/2021</td>
                         <td th:text="${op.getName()}">Movimento 1</td>
-                        <td th:text="${op.getAmount()}" style="color:red;text-align: right;"> - 250,00 €</td>
+                        <td  th:classappend="${op.isDebit() ? 'text-danger' : 'text-success'}" style="text-align: right;"> <span th:text="${op.isDebit() ? '' : '+'}"}></span> <span th:text="${op.getAmount()}"></span> €</td>
                         <td style="padding-left: 8%;">
                             <button class="btn border" style="border-color: #286956; color: #286956;"><i
                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </button>
-                            <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                            <button th:if="${!op.isAccomplished()}"  class="btn border" style="border-color: #286956; color: #286956;"><i
                                     class="fa fa-trash"
                                     aria-hidden="true"></i>
                             </button>
-                            <button class="btn border" style="border-color: #286956; color: #286956;"><i
+                            <button th:if="${!op.isAccomplished()}" class="btn border" style="border-color: #286956; color: #286956;"><i
                                     class="fa fa-check"
                                     aria-hidden="true"></i>
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">19/03/2021</th>
-                        <td>Transação 1</td>
-                        <td style="color:green; text-align: right;"> + 250,00 €</td>
-                        <td style="padding-left: 8%;">
-                            <button class="btn border" style="border-color: #286956; color: #286956;"><i
-                                    class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </button>
 
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>

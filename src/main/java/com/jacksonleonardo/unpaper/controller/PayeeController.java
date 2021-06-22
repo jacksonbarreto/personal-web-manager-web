@@ -76,19 +76,17 @@ public class PayeeController {
             ModelAndView mv = new ModelAndView("redirect:/payees");
             Optional<IPayee> optional = SessionService.getCurrentUser().getPayee().stream().filter(w -> w.getID().equals(UUID.fromString(id))).findFirst();
             if (optional.isPresent()){
-
                 IPayee payee = optional.get();
                 payee.updateName(payeeDTO.getName());
                 SessionService.getCurrentUser().updatePayee(payee);
                 UserRepository.getInstance().update(SessionService.getCurrentUser());
                 mv.addObject("msg","Beneficiário alterado com sucesso.");
                 mv.addObject("error",false);
-                return mv;
             }else {
                 mv.addObject("msg","Beneficiário não encontrado.");
                 mv.addObject("error",true);
-                return mv;
             }
+            return mv;
         }
     }
 

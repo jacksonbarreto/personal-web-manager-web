@@ -13,7 +13,7 @@
                 <a class="nav-link" href="#"><i class="fa fa-cog" style="font-size: xx-large"></i></a>
             </li>
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#"><i class="fa fa-sign-out" style="font-size: xx-large;"></i></a>
+                <a class="nav-link" th:href="@{/logout}"><i class="fa fa-sign-out" style="font-size: xx-large;"></i></a>
             </li>
         </ul>
     </nav>
@@ -38,41 +38,36 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link active" aria-current="page" th:href="@{/dashboard}">
                     <span data-feather="home"></span>
-                    Dashboard
+                    Inicio
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/operations}">
                     <span data-feather="file"></span>
-                    Orders
+                    Operações
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/wallets}">
                     <span data-feather="shopping-cart"></span>
-                    Products
+                    Carteiras
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/payees}">
                     <span data-feather="users"></span>
-                    Customers
+                    Beneficiários
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/categories}">
                     <span data-feather="bar-chart-2"></span>
-                    Reports
+                    Categorias
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Integrations
-                </a>
-            </li>
+
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

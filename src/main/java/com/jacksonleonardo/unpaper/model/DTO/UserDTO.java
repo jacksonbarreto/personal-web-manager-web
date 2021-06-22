@@ -1,11 +1,18 @@
 package com.jacksonleonardo.unpaper.model.DTO;
 
-import java.util.UUID;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class UserDTO {
-    public UUID ID;
+@NotNull
+    @NotEmpty
+    @Size(min = 3)
     private String name;
+    @Email
     private String email;
+    @Size(min = 8)
     private String password;
 
     public String getPassword() {
@@ -16,15 +23,6 @@ public class UserDTO {
         this.password = password;
     }
 
-    public UserDTO(){}
-
-    public UUID getID() {
-        return ID;
-    }
-
-    public void setID(UUID ID) {
-        this.ID = ID;
-    }
 
     public String getName() {
         return name;
@@ -45,7 +43,6 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "ID=" + ID +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
