@@ -20,10 +20,11 @@
     background-color: #14342b;
 }
 
-a.active {
+.desktopActive {
     font-weight: bold;
-    color: white;
+    color: white !important;
     background-color: #286956;
+
 }
 
 .button {
