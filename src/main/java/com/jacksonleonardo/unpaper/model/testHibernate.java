@@ -250,21 +250,18 @@ public class testHibernate {
         IMovement movement1 = new Movement("Salário", new BigDecimal("3800.00"), LocalDate.parse("2021-01-01"), formOfPayment4, payee4, mc1, EOperationType.CREDIT, ERepetitionFrequency.MONTHLY, null);
 
         w2.addMovement(movement1);
-        movement1.accomplish(LocalDate.parse("2021-01-02"));
-        w2.updateMovement(movement1);
+        w2.confirmMovement(movement1,LocalDate.parse("2021-01-02"));
         Huffman.updateWallet(w2);
 
         IMovement movement2 = new Movement("Conta de luz", new BigDecimal("153.89"), LocalDate.parse("2021-06-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
         w2.addMovement(movement2);
-        movement2.accomplish(LocalDate.parse("2021-06-05"));
-        w2.updateMovement(movement2);
+        w2.confirmMovement(movement2,LocalDate.parse("2021-06-05"));
         Huffman.updateWallet(w2);
 
         IMovement movement3 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-06-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
 
         w2.addMovement(movement3);
-        movement3.accomplish(LocalDate.parse("2021-06-04"));
-        w2.updateMovement(movement3);
+        w2.confirmMovement(movement3,LocalDate.parse("2021-06-04"));
         Huffman.updateWallet(w2);
 
         IMovement movement4 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-05-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
@@ -274,29 +271,24 @@ public class testHibernate {
         w2.addMovement(movement4);
         w2.addMovement(movement5);
         w2.addMovement(movement6);
-        movement4.accomplish(LocalDate.parse("2021-05-04"));
-        movement5.accomplish(LocalDate.parse("2021-04-04"));
-        movement6.accomplish(LocalDate.parse("2021-03-04"));
+        w2.confirmMovement(movement4,LocalDate.parse("2021-05-07"));
+        w2.confirmMovement(movement5,LocalDate.parse("2021-04-04"));
+        w2.confirmMovement(movement6,LocalDate.parse("2021-03-04"));
 
-        w2.updateMovement(movement4);
-        w2.updateMovement(movement5);
-        w2.updateMovement(movement6);
         Huffman.updateWallet(w2);
 
         IMovement movement7 = new Movement("Conta de luz", new BigDecimal("168.55"), LocalDate.parse("2021-05-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
-        IMovement movement8 = new Movement("Conta de luz", new BigDecimal("208.75"), LocalDate.parse("2021-04-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
-        IMovement movement9 = new Movement("Conta de luz", new BigDecimal("132.23"), LocalDate.parse("2021-03-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        IMovement movement8 = new Movement("Conta de luz", new BigDecimal("208.75"), LocalDate.parse("2021-03-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        IMovement movement9 = new Movement("Conta de luz", new BigDecimal("132.23"), LocalDate.parse("2021-02-02"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
         w2.addMovement(movement7);
         w2.addMovement(movement8);
         w2.addMovement(movement9);
+        Huffman.updateWallet(w2);
 
-        movement7.accomplish(LocalDate.parse("2021-05-04"));
-        movement8.accomplish(LocalDate.parse("2021-04-04"));
-        movement9.accomplish(LocalDate.parse("2021-03-04"));
+        w2.confirmMovement(movement7,LocalDate.parse("2021-06-07"));
+        w2.confirmMovement(movement8);
+        w2.confirmMovement(movement9);
 
-        w2.updateMovement(movement7);
-        w2.updateMovement(movement8);
-        w2.updateMovement(movement9);
 
         Huffman.updateWallet(w2);
 
