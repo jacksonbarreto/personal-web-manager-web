@@ -52,6 +52,33 @@ a.active {
     color: white;
     background-color: #286956;
 }
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+/* The navigation menu links */
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: #286956;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.sidebar div > ul > li > a:hover {
+    font-weight: bold;
+    color: white;
+    background-color: #14342b;
+}
+
+a.active {
+    font-weight: bold;
+    color: white;
+    background-color: #286956;
+}
 
 .button {
     position: relative;
@@ -97,4 +124,11 @@ a.active {
     .sidenav a {
         font-size: 18px;
     }
+}
+nav > a {
+    color: white;
+}
+
+nav > ul > li > a > i{
+    color: white;
 }
