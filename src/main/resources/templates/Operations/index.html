@@ -35,23 +35,23 @@
             </div>
 
 
-            <form class="form-control" method="post" action="">
+            <form class="form-control" th:object="${searchDTO}" method="post" action="/operations/search">
                 <div class="row">
                     <div class="col-3">
                         <label for="datasPesq">Pesquisar entre: </label>
-                        <input type="date" class="form-control">
+                        <input required type="date" class="form-control" th:field="*{startDate}">
                     </div>
 
                     <div class="col-3">
                         <label style="padding-top: 10px;">até</label>
-                        <input type="date" class="form-control">
+                        <input required type="date" class="form-control" th:field="*{endDate}">
                     </div>
 
 
                     <div class="col-4">
                         <label for="carteiraInpt" class="form-label">Carteira</label>
-                        <select class="form-select" aria-label="Default select example" id="carteiraInpt">
-                            <option selected>Escolha uma carteira</option>
+                        <select class="form-select"  th:field="*{wallet}">
+                            <option selected value="n">Escolha uma carteira</option>
                             <option th:each="wallet : ${wallets}" th:value="${wallet.getID().toString()}"
                                     th:text="${wallet.getName()}"></option>
                         </select>
@@ -64,9 +64,9 @@
             </form>
 
             <div class="row">
-                <h2 th:if="${wallet != null}">Carteira: <span th:text="${wallet.getName()}"></span></h2>
-                <span th:if="${wallet != null && wallet.getMonthOperations().isEmpty()}">Carteira sem movimentos</span>
-                <table class="table table-striped" th:if="${wallet != null && !wallet.getMonthOperations().isEmpty()} ">
+                <h2 th:if="${operations != null}">Carteira: <span th:text="${walletName}"></span></h2>
+                <span th:if="${operations != null && operations.isEmpty()}">Carteira sem movimentos</span>
+                <table class="table table-striped" th:if="${operations != null && !operations.isEmpty()}" >
                     <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -76,8 +76,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="op : ${wallet.getMonthOperations()}">
-                        <td th:text="${op.getDueDate()}">19/03/2021</td>
+                    <tr th:each="op : ${operations}">
+                        <td th:text="${ T(com.jacksonleonardo.unpaper.model.DTO.SearchDTO).formateddate(op.getDueDate()) }"></td>
                         <td th:text="${op.getName()}">Movimento 1</td>
                         <td th:classappend="${op.isDebit() ? 'text-danger' : 'text-success'}"
                             style="text-align: right;"><span th:text="${op.isDebit() ? '' : '+'}" }></span> <span

@@ -1,6 +1,7 @@
 package com.jacksonleonardo.unpaper.controller;
 
 import com.jacksonleonardo.unpaper.model.DTO.OperationDTO;
+import com.jacksonleonardo.unpaper.model.DTO.SearchDTO;
 import com.jacksonleonardo.unpaper.model.entities.IWallet;
 import com.jacksonleonardo.unpaper.model.enumerators.ERepetitionFrequency;
 import com.jacksonleonardo.unpaper.model.repositories.FormOfPaymentRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
@@ -27,7 +29,8 @@ import java.util.UUID;
 public class OperationController {
 
     @GetMapping({"","/index.html", "/index"})
-    public ModelAndView index(){
+    public ModelAndView index(SearchDTO searchDTO, ModelAndView modelAndView){
+        System.out.println("search GET: "+searchDTO);
         ModelAndView mv = new ModelAndView("/operations/index");
         mv.addObject("wallets", SessionService.getCurrentUser().getWallets());
         Optional<IWallet> optional = SessionService.getCurrentUser().getWallets().stream().findFirst();
@@ -35,10 +38,27 @@ public class OperationController {
         if (optional.isPresent()){
             wallet = optional.get();
         }
-        mv.addObject("wallet", wallet);
+        if (modelAndView.isEmpty()){
+            mv.addObject("operations", wallet.getMonthOperations());
+            mv.addObject("walletName", wallet.getName());
+        } else {
+            mv = modelAndView;
+        }
 
 
 
+        return mv;
+    }
+
+    @PostMapping("/search")
+    public ModelAndView search(SearchDTO searchDTO){
+        System.out.println("search POST: "+searchDTO);
+        ModelAndView mv = new ModelAndView("/operations/index");
+        mv.addObject("wallets", SessionService.getCurrentUser().getWallets());
+        IWallet wallet = SessionService.getCurrentUser().getWallets().stream().filter(w -> w.getID().equals(UUID.fromString(searchDTO.getWallet()))).toList().get(0);
+        mv.addObject("walletName", wallet.getName());
+        mv.addObject("operations", wallet.getOperationsBetween(YearMonth.from(LocalDate.parse(searchDTO.getStartDate())) , YearMonth.from(LocalDate.parse(searchDTO.getEndDate()))) );
+        System.out.println(wallet.getOperationsBetween(YearMonth.from(LocalDate.parse(searchDTO.getStartDate())) , YearMonth.from(LocalDate.parse(searchDTO.getEndDate()))));
         return mv;
     }
 
