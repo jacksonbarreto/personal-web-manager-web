@@ -219,8 +219,8 @@ public class testHibernate {
         IWallet w3 = new Wallet("Crédito Agrícola", "Poupança para reforma.",
                 Currency.getInstance(Locale.getDefault()), Arrays.asList(formOfPayment2, formOfPayment4), new Payee("Crédito Agrícola"));
 
-        Huffman.addWallet(w1);
         Huffman.addWallet(w2);
+        Huffman.addWallet(w1);
         Huffman.addWallet(w3);
 
         IPayee payee1 = new Payee("IPVC");
@@ -264,8 +264,42 @@ public class testHibernate {
 
         w2.addMovement(movement3);
         movement3.accomplish(LocalDate.parse("2021-06-04"));
-        w2.updateMovement(movement2);
+        w2.updateMovement(movement3);
         Huffman.updateWallet(w2);
+
+        IMovement movement4 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-05-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
+        IMovement movement5 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-04-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
+        IMovement movement6 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-03-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
+
+        w2.addMovement(movement4);
+        w2.addMovement(movement5);
+        w2.addMovement(movement6);
+        movement4.accomplish(LocalDate.parse("2021-05-04"));
+        movement5.accomplish(LocalDate.parse("2021-04-04"));
+        movement6.accomplish(LocalDate.parse("2021-03-04"));
+
+        w2.updateMovement(movement4);
+        w2.updateMovement(movement5);
+        w2.updateMovement(movement6);
+        Huffman.updateWallet(w2);
+
+        IMovement movement7 = new Movement("Conta de luz", new BigDecimal("168.55"), LocalDate.parse("2021-05-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        IMovement movement8 = new Movement("Conta de luz", new BigDecimal("208.75"), LocalDate.parse("2021-04-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        IMovement movement9 = new Movement("Conta de luz", new BigDecimal("132.23"), LocalDate.parse("2021-03-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        w2.addMovement(movement7);
+        w2.addMovement(movement8);
+        w2.addMovement(movement9);
+
+        movement7.accomplish(LocalDate.parse("2021-05-04"));
+        movement8.accomplish(LocalDate.parse("2021-04-04"));
+        movement9.accomplish(LocalDate.parse("2021-03-04"));
+
+        w2.updateMovement(movement7);
+        w2.updateMovement(movement8);
+        w2.updateMovement(movement9);
+
+        Huffman.updateWallet(w2);
+
 
         UserRepository.getInstance().update(Huffman);
 
