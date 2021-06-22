@@ -1,6 +1,8 @@
 package com.jacksonleonardo.unpaper.model;
 
 import com.jacksonleonardo.unpaper.model.entities.*;
+import com.jacksonleonardo.unpaper.model.enumerators.EOperationType;
+import com.jacksonleonardo.unpaper.model.enumerators.ERepetitionFrequency;
 import com.jacksonleonardo.unpaper.model.repositories.FormOfPaymentRepository;
 import com.jacksonleonardo.unpaper.model.repositories.MovementCategoryRepository;
 import com.jacksonleonardo.unpaper.model.repositories.UserRepository;
@@ -8,11 +10,11 @@ import com.jacksonleonardo.unpaper.model.services.SessionService;
 import com.jacksonleonardo.unpaper.model.valueObjects.Email;
 import com.jacksonleonardo.unpaper.model.valueObjects.IEmail;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collections;
-import java.util.Currency;
-import java.util.Locale;
+import java.time.LocalDate;
+import java.util.*;
 
 import static com.jacksonleonardo.unpaper.model.enumerators.ERole.ADMIN;
 import static com.jacksonleonardo.unpaper.model.enumerators.ERole.SIMPLE;
@@ -65,14 +67,8 @@ public class testHibernate {
                 Collections.singletonList(SIMPLE),
                 new Email("huffman@ipvc.pt"));
 
-        IFormOfPayment formOfPayment1 = new FormOfPayment("MB Way Express");
-        IPayee payeeFormat = new Payee("Wallet");
-        IWallet w1 = new Wallet("Wallet", "Save money for Disney",
-                Currency.getInstance(Locale.getDefault()), Collections.singleton(formOfPayment1), payeeFormat);
-        Huffman.addWallet(w1);
-
-
         UserRepository.getInstance().add(Huffman);
+
 
         UserRepository.getInstance().add(new User("Melinda Gates", new Credential("melinda", "admin123"),
                 Collections.singletonList(ACTIVE),
@@ -191,24 +187,81 @@ public class testHibernate {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+        IMovementCategory mc1 = MovementCategory.createPublicCategory("Rendimentos", uri);
+        IMovementCategory mc2 = MovementCategory.createPublicCategory("Despesas Gerais Familiares", uri);
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Restauração", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Educação", uri));
-        MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Rendimentos", uri));
+        MovementCategoryRepository.getInstance().add(mc1);
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Passes Mensais", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Estacionamento", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Saúde", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Seguros", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Impostos", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Tarifas Bancárias", uri));
-        MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Despesas Gerais Familiares", uri));
+        MovementCategoryRepository.getInstance().add(mc2);
 
         // Register payment methods
+        IFormOfPayment formOfPayment1 = new FormOfPayment("MB Way");
+        IFormOfPayment formOfPayment2 = new FormOfPayment("Dinheiro");
+        IFormOfPayment formOfPayment3 = new FormOfPayment("Cheque");
+        IFormOfPayment formOfPayment4 = new FormOfPayment("Transferência Bancária");
 
-        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("MB Way"));
-        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Dinheiro"));
-        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Cheque"));
-        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(new FormOfPayment("Transferência Bancária"));
+        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(formOfPayment1);
+        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(formOfPayment2);
+        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(formOfPayment3);
+        FormOfPaymentRepository.defaultFormOfPaymentRepository().add(formOfPayment4);
 
+
+        IWallet w1 = new Wallet("Millenium", "Conta a Ordem no Millenium BCP.",
+                Currency.getInstance(Locale.getDefault()), Arrays.asList(formOfPayment1, formOfPayment2), new Payee("Millenium"));
+        IWallet w2 = new Wallet("Santander", "Conta salário no Santander.",
+                Currency.getInstance(Locale.getDefault()), Arrays.asList(formOfPayment1, formOfPayment2, formOfPayment4), new Payee("Santander"));
+        IWallet w3 = new Wallet("Crédito Agrícola", "Poupança para reforma.",
+                Currency.getInstance(Locale.getDefault()), Arrays.asList(formOfPayment2, formOfPayment4), new Payee("Crédito Agrícola"));
+
+        Huffman.addWallet(w1);
+        Huffman.addWallet(w2);
+        Huffman.addWallet(w3);
+
+        IPayee payee1 = new Payee("IPVC");
+        IPayee payee2 = new Payee("Continente");
+        IPayee payee3 = new Payee("Pingo Doce");
+        IPayee payee4 = new Payee("Microsoft");
+        IPayee payee5 = new Payee("MIT");
+        IPayee payee6 = new Payee("EDP");
+
+        Huffman.addPayee(payee1);
+        Huffman.addPayee(payee2);
+        Huffman.addPayee(payee3);
+        Huffman.addPayee(payee4);
+        Huffman.addPayee(payee5);
+        Huffman.addPayee(payee6);
+
+        IMovementCategory category1 = new MovementCategory("Fast Food");
+        IMovementCategory category2 = new MovementCategory("Ginásio");
+        IMovementCategory category4 = new MovementCategory("Criptomoeda");
+        IMovementCategory category5 = new MovementCategory("Investimentos");
+
+        Huffman.addCategory(category1);
+        Huffman.addCategory(category2);
+        Huffman.addCategory(category4);
+        Huffman.addCategory(category5);
+
+        IMovement movement1 = new Movement("Salário", new BigDecimal("3800.00"), LocalDate.parse("2021-01-01"), formOfPayment4, payee4, mc1, EOperationType.CREDIT, ERepetitionFrequency.MONTHLY, null);
+
+        w2.addMovement(movement1);
+        movement1.accomplish(LocalDate.parse("2021-01-02"));
+        w2.updateMovement(movement1);
+        Huffman.updateWallet(w2);
+
+        IMovement movement2 = new Movement("Conta de luz", new BigDecimal("153.89"), LocalDate.parse("2021-06-03"), formOfPayment1,payee6, mc2,EOperationType.DEBIT );
+        w2.addMovement(movement2);
+        movement2.accomplish(LocalDate.parse("2021-06-05"));
+        w2.updateMovement(movement2);
+        Huffman.updateWallet(w2);
+
+
+        UserRepository.getInstance().update(Huffman);
 
     }
 }
