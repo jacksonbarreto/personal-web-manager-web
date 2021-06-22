@@ -260,6 +260,12 @@ public class testHibernate {
         w2.updateMovement(movement2);
         Huffman.updateWallet(w2);
 
+        IMovement movement3 = new Movement("Bolsa Doutoramento", new BigDecimal("6250.89"), LocalDate.parse("2021-06-03"), formOfPayment4,payee5, mc1, EOperationType.CREDIT );
+
+        w2.addMovement(movement3);
+        movement3.accomplish(LocalDate.parse("2021-06-04"));
+        w2.updateMovement(movement2);
+        Huffman.updateWallet(w2);
 
         UserRepository.getInstance().update(Huffman);
 
