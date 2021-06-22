@@ -37,7 +37,9 @@
             </div>
 
             <div class="row">
-                <div th:if="${categories.isEmpty()}"> Não existem categorias.</div>
+                <div th:if="${categories.isEmpty()}">
+                    <img src="/img/emptyState.png" class="img-fluid mx-auto d-block">
+                </div>
                 <table th:if="${!categories.isEmpty()}" class="table table-striped"
                        style="width:50%;margin: auto;padding: 10px;">
                     <thead>

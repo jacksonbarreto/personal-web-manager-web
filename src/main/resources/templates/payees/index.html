@@ -36,7 +36,10 @@
             </div>
 
             <div class="row" >
-                <div th:if="${payees.isEmpty()}"> Não existem beneficiários.</div>
+                <div th:if="${payees.isEmpty()}">
+<!--                    Não existem beneficiários.-->
+                    <img src="/img/emptyState.png" class="img-fluid mx-auto d-block">
+                </div>
                 <table th:if="${!payees.isEmpty()}" class="table table-striped" style="width:50%;margin: auto;padding: 10px;">
                     <thead>
                     <tr>
