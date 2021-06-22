@@ -23,42 +23,51 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <h1>Operações</h1>
+                    </div>
+                    <div class="col-2 me-4">
+                        <button type="button" class="btn btn-outline-success btn-cria"
+                                th:onclick="'window.location.href=\'/operations/new\''">Nova Operação
+                        </button>
+                    </div>
+                </div>
 
-                <div class="col">
-                    <h1>Operações</h1>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-outline-success btn-cria"
-                            th:onclick="'window.location.href=\'/operations/new\''">Nova Operação
-                    </button>
-                </div>
             </div>
 
 
-            <form class="form-control" th:object="${searchDTO}" method="post" action="/operations/search">
+            <form th:object="${searchDTO}" method="post" action="/operations/search" class="my-3">
                 <div class="row">
-                    <div class="col-3">
-                        <label for="datasPesq">Pesquisar entre: </label>
-                        <input required type="date" class="form-control" th:field="*{startDate}">
+                    <div class="col">
+                        <label>Pesquisar entre: </label>
+                        <div class="row">
+                            <div class="col-5">
+                                <input id="datasPesq" required type="date" class="form-control" th:field="*{startDate}">
+                            </div>
+                            <div class="col-2 text-center">
+                                <label class="pt-2 " >até</label>
+                            </div>
+                            <div class="col-5">
+                                <input required type="date" class="form-control" th:field="*{endDate}">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-3">
-                        <label style="padding-top: 10px;">até</label>
-                        <input required type="date" class="form-control" th:field="*{endDate}">
-                    </div>
-
-
-                    <div class="col-4">
-                        <label for="carteiraInpt" class="form-label">Carteira</label>
-                        <select class="form-select"  th:field="*{wallet}">
-                            <option selected value="n">Escolha uma carteira</option>
-                            <option th:each="wallet : ${wallets}" th:value="${wallet.getID().toString()}"
-                                    th:text="${wallet.getName()}"></option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-outline-success btn-cria">Pesquisar
-                        </button>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-8">
+                                <label >Carteira</label>
+                                <select class="form-select"  th:field="*{wallet}">
+                                    <option selected value="n">Escolha uma carteira</option>
+                                    <option th:each="wallet : ${wallets}" th:value="${wallet.getID().toString()}"
+                                            th:text="${wallet.getName()}"></option>
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-outline-success btn-cria mt-4">Pesquisar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
