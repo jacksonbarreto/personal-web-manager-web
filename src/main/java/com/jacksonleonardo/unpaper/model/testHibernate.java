@@ -193,6 +193,7 @@ public class testHibernate {
         }
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Restauração", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Educação", uri));
+        MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Rendimentos", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Passes Mensais", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Estacionamento", uri));
         MovementCategoryRepository.getInstance().add(MovementCategory.createPublicCategory("Saúde", uri));
