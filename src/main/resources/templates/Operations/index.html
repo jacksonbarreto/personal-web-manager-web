@@ -73,7 +73,9 @@
 
             <div class="row">
                 <h2 th:if="${operations != null}">Carteira: <span th:text="${walletName}"></span></h2>
-                <span th:if="${operations != null && operations.isEmpty()}">Carteira sem movimentos</span>
+                <span th:if="${operations != null && operations.isEmpty()}">
+                    <img src="/img/emptyState.png" class="img-fluid mx-auto d-block">
+                </span>
                 <table class="table table-striped" th:if="${operations != null && !operations.isEmpty()}" >
                     <thead>
                     <tr>
