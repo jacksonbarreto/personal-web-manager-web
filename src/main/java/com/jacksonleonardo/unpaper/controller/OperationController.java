@@ -38,7 +38,7 @@ public class OperationController {
         if (optional.isPresent()){
             wallet = optional.get();
         }
-        if (modelAndView.isEmpty()){
+        if (modelAndView.isEmpty() && wallet != null){
             mv.addObject("operations", wallet.getMonthOperations());
             mv.addObject("walletName", wallet.getName());
         } else {
